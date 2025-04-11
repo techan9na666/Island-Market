@@ -23,7 +23,7 @@ export default function Products() {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white/90">
       {/* Hero Section */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">

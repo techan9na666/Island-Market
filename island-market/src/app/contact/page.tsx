@@ -27,9 +27,9 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-16 bg-white/90">
       {/* Hero Section */}
-      <section className="bg-gray-50 py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -43,7 +43,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16">
+      <section className="py-16 bg-white/90">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -101,35 +101,7 @@ export default function Contact() {
               </form>
             </div>
 
-            {/* Store Information */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Store Information</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Address</h3>
-                  <p className="text-gray-600">
-                    123 Main Street<br />
-                    Logan, UT 84321
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Phone</h3>
-                  <p className="text-gray-600">(435) 555-0123</p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Email</h3>
-                  <p className="text-gray-600">info@islandmarket.com</p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Hours</h3>
-                  <ul className="text-gray-600 space-y-1">
-                    <li>Monday - Friday: 7:00 AM - 9:00 PM</li>
-                    <li>Saturday: 8:00 AM - 9:00 PM</li>
-                    <li>Sunday: 8:00 AM - 7:00 PM</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>

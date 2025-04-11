@@ -1,5 +1,11 @@
-import Image from "next/image";
+import Hero from '@/components/Hero';
 import Script from "next/script";
+import { Delius_Unicase } from 'next/font/google';
+
+const deliusUnicase = Delius_Unicase({ 
+  weight: ['400', '700'],
+  subsets: ['latin'],
+});
 
 export default function Home() {
   return (
@@ -11,40 +17,7 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-48 pb-32 bg-gradient-to-b from-yellow-500/50 to-green-500/50">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="float-animation mb-8">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
-                Welcome to Island Market
-              </h1>
-            </div>
-            <p className="text-xl md:text-2xl mb-6 text-white/95 font-medium">
-              A historic grocery store serving Logan, Utah since 1919. 
-              Specializing in local craft products, fresh produce, and community service.
-            </p>
-            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
-              <p className="text-lg text-white font-medium">
-                ⭐ Rated 4.7/5 on Google
-              </p>
-            </div>
-            <div className="space-x-4">
-              <a
-                href="/about"
-                className="btn-primary"
-              >
-                Our History
-              </a>
-              <a
-                href="/products"
-                className="btn-secondary"
-              >
-                View Products
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Instagram Section */}
       <section className="py-16 bg-white/80 backdrop-blur-sm">

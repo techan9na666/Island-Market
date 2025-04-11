@@ -1,83 +1,100 @@
 import Image from "next/image";
+import Link from "next/link";
+import Timeline from "@/components/Timeline";
+import MobileTimeline from "@/components/MobileTimeline";
 
-export default function About() {
+const historicalEvents = [
+  {
+    year: 1920,
+    title: "The Beginning",
+    description: "The building that would become Island Market first opened as a butcher's shop, marking the start of its long history serving the Logan community.",
+    image: "/images/hansen.png",
+    imageAlt: "Hansen Grocery storefront",
+    imageCaption: "A 1945 photo of the owners of Hansen Grocery outside their store, which eventually became the Island Market."
+  },
+  {
+    year: 1953,
+    title: "A New Era",
+    description: "The market underwent significant renovations, expanding its space and modernizing its facilities to better serve the growing community.",
+    image: "/images/1953.png",
+    imageAlt: "1953 Island Market renovation",
+    imageCaption: "A 1953 photo in The Herald Journal picturing the newly-remodeled Island Market, the owners, and the employees."
+  },
+  {
+    year: 1961,
+    title: "Joining the IGA",
+    description: "The market became a member of the Independent Grocers Association, strengthening its position in the local grocery industry.",
+    image: "/images/iga.png",
+    imageAlt: "1961 Island Market IGA membership",
+    imageCaption: "A 1961 photo of the Island Market showing its membership in the Independent Grocers Association."
+  },
+  {
+    year: 1987,
+    title: "Community Spirit",
+    description: "Under owner Thomas Duce, the market continued to be a community hub, sponsoring local sports teams and participating in community events.",
+    image: "/images/softball.png",
+    imageAlt: "Island Market softball team",
+    imageCaption: "The Island Market softball team, with Thomas Duce (the store's owner in 1987) on the bottom right."
+  },
+  {
+    year: 2014,
+    title: "Modern Storefront",
+    description: "The market's exterior was updated while maintaining its historic charm, continuing to serve as a beloved local landmark.",
+    image: "/images/island-fall.png",
+    imageAlt: "Modern Island Market storefront",
+    imageCaption: "The Island Market's modern storefront (2014)."
+  },
+  {
+    year: new Date().getFullYear(),
+    title: "Looking Forward",
+    description: "Today, Island Market continues to evolve while staying true to its roots, serving as both a grocery store and a community gathering place. We're excited to write the next chapter of our history with you.",
+    isModern: true
+  }
+];
+
+export default function AboutPage() {
+  // Sort events in reverse chronological order
+  const sortedEvents = [...historicalEvents].sort((a, b) => b.year - a.year);
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Section with Background Image */}
-      <section className="relative h-[60vh] w-full overflow-hidden">
-        <Image
-          src="/images/about-hero.jpeg"
-          alt="Island Market Historic Building"
-          fill
-          className="object-cover"
-          priority
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-black/10 bg-opacity-30 flex items-center justify-center">
-          <div className="text-center text-white max-w-3xl px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Our History
-            </h1>
-            <p className="text-xl">
-              Serving Logan, Utah since 1919
-            </p>
+    <div className="min-h-screen pb-16 bg-white/90 text-black">
+      <div className="container mx-auto px-4 pt-8 md:pt-16">
+        {/* Hero Section */}
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Story</h1>
+          <p className="text-xl">
+            A century of serving the Logan community
+          </p>
+        </div>
+
+        {/* Timeline */}
+        <div className="max-w-6xl mx-auto">
+          {/* Mobile Timeline */}
+          <div className="block md:hidden">
+            <MobileTimeline events={sortedEvents} />
+          </div>
+          
+          {/* Desktop Timeline */}
+          <div className="hidden md:block">
+            <Timeline events={sortedEvents} />
           </div>
         </div>
-      </section>
 
-      {/* Timeline Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto space-y-12">
-            <div>
-              <h2 className="text-2xl font-bold mb-4">1919</h2>
-              <p className="text-gray-600">
-                The building housing Island Market was first constructed, marking the beginning of our story in Logan, Utah.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4">1920</h2>
-              <p className="text-gray-600">
-                The building briefly served as a butcher shop, establishing its roots in food service for the community.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Post-1920</h2>
-              <p className="text-gray-600">
-                The building has operated nearly continuously as a corner grocery store, with only brief interruptions for renovations and during the Great Depression.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4">1982</h2>
-              <p className="text-gray-600">
-                The store adopted the name "Island Market" for the second time in its history, and the name has remained ever since.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Present Day</h2>
-              <p className="text-gray-600">
-                Island Market continues to serve as a vital part of the Logan community, specializing in local craft products, grocery staples, fresh produce, and fresh local coffee. We're currently working with Utah State University to document our rich history in detail.
-              </p>
-            </div>
-          </div>
+        {/* Attribution */}
+        <div className="mt-16 text-center">
+          <p className="text-sm">
+            Historical information and images provided by the{' '}
+            <a 
+              href="https://library.usu.edu/news/collections/island-market" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-400 underline hover:text-accent-orange"
+            >
+              Utah State University Library Special Collections & Archives
+            </a>
+          </p>
         </div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-            <p className="text-xl text-gray-600">
-              To continue our century-long tradition of serving the Logan community with quality products, exceptional service, and a commitment to local partnerships.
-            </p>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
-  )
+  );
 }

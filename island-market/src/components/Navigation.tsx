@@ -1,10 +1,18 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev)
+  }, [])
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false)
+  }, [])
 
   return (
     <nav className="bg-white">
@@ -17,16 +25,16 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">
+            <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
               Home
             </Link>
-            <Link href="/about" className="text-gray-600 hover:text-gray-900">
+            <Link href="/about" className="text-gray-600 hover:text-gray-900 transition-colors">
               About
             </Link>
-            <Link href="/products" className="text-gray-600 hover:text-gray-900">
+            <Link href="/products" className="text-gray-600 hover:text-gray-900 transition-colors">
               Products
             </Link>
-            <Link href="/contact" className="text-gray-600 hover:text-gray-900">
+            <Link href="/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
               Contact
             </Link>
           </div>
@@ -34,7 +42,8 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button
             className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
           >
             <svg
               className="w-6 h-6"
@@ -55,40 +64,40 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4">
-            <div className="flex flex-col space-y-4">
-              <Link
-                href="/"
-                className="text-gray-600 hover:text-gray-900"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="text-gray-600 hover:text-gray-900"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                href="/products"
-                className="text-gray-600 hover:text-gray-900"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Products
-              </Link>
-              <Link
-                href="/contact"
-                className="text-gray-600 hover:text-gray-900"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
-            </div>
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+        }`}>
+          <div className="flex flex-col space-y-4 py-4">
+            <Link
+              href="/"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+              onClick={closeMenu}
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+              onClick={closeMenu}
+            >
+              About
+            </Link>
+            <Link
+              href="/products"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+              onClick={closeMenu}
+            >
+              Products
+            </Link>
+            <Link
+              href="/contact"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+              onClick={closeMenu}
+            >
+              Contact
+            </Link>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   )
