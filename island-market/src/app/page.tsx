@@ -11,29 +11,33 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="relative py-32">
-        <div className="container mx-auto px-4">
+      <section className="relative pt-48 pb-32 bg-gradient-to-b from-yellow-500/50 to-green-500/50">
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Welcome to Island Market
-            </h1>
-            <p className="text-xl mb-4 text-white/90">
+            <div className="float-animation mb-8">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+                Welcome to Island Market
+              </h1>
+            </div>
+            <p className="text-xl md:text-2xl mb-6 text-white/95 font-medium">
               A historic grocery store serving Logan, Utah since 1919. 
               Specializing in local craft products, fresh produce, and community service.
             </p>
-            <p className="text-lg mb-8 text-white/90">
-              Rated 4.7/5 on Google
-            </p>
+            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
+              <p className="text-lg text-white font-medium">
+                ⭐ Rated 4.7/5 on Google
+              </p>
+            </div>
             <div className="space-x-4">
               <a
                 href="/about"
-                className="inline-block bg-[#FFC107] text-[#2C3E50] px-6 py-3 rounded-lg hover:bg-[#FFB300] transition-colors font-semibold"
+                className="btn-primary"
               >
                 Our History
               </a>
               <a
                 href="/products"
-                className="inline-block bg-white/90 text-[#4CAF50] border-2 border-white px-6 py-3 rounded-lg hover:bg-white hover:text-[#45a049] transition-colors font-semibold"
+                className="btn-secondary"
               >
                 View Products
               </a>

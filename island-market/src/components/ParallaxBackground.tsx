@@ -22,13 +22,14 @@ export default function ParallaxBackground() {
           backgroundImage: 'url("/images/background.jpeg")',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: '120% auto',
+          backgroundSize: 'cover',
           transform: `translateY(${scrollPosition * 0.05}px)`,
           transition: 'transform 0.1s ease-out',
+          opacity: 0.5,
         }}
       >
-        {/* White to Transparent Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent"></div>
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/20"></div>
       </div>
     </div>
   );
